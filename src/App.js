@@ -26,14 +26,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="inputs">
-          <form onSubmit={this.handleSubmit}>
-            <input className="inputBox" type="text" name="currentName" value={this.state.currentName} onChange={this.nameUpdate}/>
-            <input className="inputBox" type="text" name="currentNum" value={this.state.currentNum} onChange={this.nameUpdate}/>
+          <form classname="formDisplay" onSubmit={this.handleSubmit}>
+            <input className="inputBox" type="text" name="currentName" value={this.state.currentName} autoComplete="off" onChange={this.nameUpdate}/>
+            <input className="inputBox" type="text" name="currentNum" value={this.state.currentNum} autoComplete="off" onChange={this.nameUpdate}/>
             <button className="submit" type="submit" disabled={isDisabled}>Submit</button>
           </form>
-          {this.state.addArr.map((item, index) => {
-            return <p key={index}>{item.name}<br />{item.number}</p>
-          })}
+          <div className="displayAdd">
+            {this.state.addArr.map((item, index) => {
+              return <p key={index}>{item.name} {item.number}</p>
+            })}
+          </div>
         </div>
       </div>
     );
