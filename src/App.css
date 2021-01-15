@@ -1,8 +1,68 @@
 .App {
   text-align: center;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: #e7e7de;
+  color: #0f3057;
+}
+
+.submit {
+  width: 10%;
+  height: 40px;
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+  outline: inherit;
+  border-radius: 16px;
 }
 
 button:disabled {
   background-color: red;
+  visibility: hidden;
+}
+
+.inputBox{
+  width: 20%;
+  height: 40px;
+  margin: 10px;
+  margin-top: 50px;
+  font-size: large;
+  background-color: #00587a;
+	color: #e7e7de;
+	border: none;
+	padding: 10px;
+	font: inherit;
+  outline: inherit;
+  border-radius: 16px;
+}
+
+.formDisplay{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 100px;
+}
+
+.inputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+
+.displayAdd {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  font-size: 2rem;
+  margin: 5px;
+  padding: 5px;
+  flex-wrap: wrap;
 }
 
