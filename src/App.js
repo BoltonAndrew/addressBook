@@ -1,15 +1,10 @@
 import React from 'react';
 import './App.css';
 
-let floatArr = [];
-console.log(floatArr)
-
 class App extends React.Component {
   state = {
     currentName: "",
     currentNum: "",
-    inputName: "",
-    inputNum: "",
     addArr: [],
   };
 
@@ -18,30 +13,26 @@ class App extends React.Component {
     let val = event.target.value;
     this.setState({ [nam]: val })
   }
-  
-  buttonClick = (event) => {
+
+  handleSubmit = (event) => {
+    let floatArr = [...this.state.addArr];
     event.preventDefault()
-    this.setState({ inputName: this.state.currentName })
-    this.setState({ inputNum: this.state.currentNum })
-    let person = {"name": `${this.state.inputName}`, "number": `${this.state.inputNum}`}
-    if (this.state.currentName !== "" && this.state.currentNum !== "") {
-      floatArr.push(person);
-    }
-    this.setState({ addArr: floatArr })
-    console.log(this.state.addArr)
+    floatArr.push({"name": `${this.state.currentName}`, "number": `${this.state.currentNum}`})
+    this.setState({ addArr: floatArr, currentName: "", currentNum: "" })
   }
 
   render() {
+    let isDisabled = this.state.currentName === "" || this.state.currentNum === ""
     return (
       <div className="App">
         <div className="inputs">
-          <form>
-            <input className="inputBox" type="text" name="currentName" onChange={this.nameUpdate}/>
-            <input className="inputBox" type="text" name="currentNum" onChange={this.nameUpdate}/>
-            <button className="submit" onClick={this.buttonClick}></button>
+          <form onSubmit={this.handleSubmit}>
+            <input className="inputBox" type="text" name="currentName" value={this.state.currentName} onChange={this.nameUpdate}/>
+            <input className="inputBox" type="text" name="currentNum" value={this.state.currentNum} onChange={this.nameUpdate}/>
+            <button className="submit" type="submit" disabled={isDisabled}>Submit</button>
           </form>
           {this.state.addArr.map((item, index) => {
-            return <p key={index}>{item.name}</p>
+            return <p key={index}>{item.name}<br />{item.number}</p>
           })}
         </div>
       </div>
